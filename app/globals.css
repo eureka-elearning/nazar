@@ -1,0 +1,314 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Переменные для анимации смены темы */
+:root {
+  --theme-transition-duration: 0.5s;
+  --theme-transition-timing: ease;
+  --menu-transition-duration: 0.3s;
+  --menu-transition-timing: cubic-bezier(0.25, 0.1, 0.25, 1.0);
+}
+
+/* Анимация для плавной смены темы */
+.theme-transition {
+  transition: background-color var(--theme-transition-duration) var(--theme-transition-timing), color
+    var(--theme-transition-duration) var(--theme-transition-timing), border-color var(--theme-transition-duration)
+    var(--theme-transition-timing), box-shadow var(--theme-transition-duration) var(--theme-transition-timing);
+}
+
+/* Анимация для фона с градиентом */
+.bg-transition {
+  transition: background var(--theme-transition-duration) var(--theme-transition-timing);
+}
+
+/* Анимации для мобильного меню */
+.menu-item-enter {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.menu-item-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity var(--menu-transition-duration) var(--menu-transition-timing), transform
+    var(--menu-transition-duration) var(--menu-transition-timing);
+}
+
+.menu-item-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.menu-item-exit-active {
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity var(--menu-transition-duration) var(--menu-transition-timing), transform
+    var(--menu-transition-duration) var(--menu-transition-timing);
+}
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 3.9%;
+
+  --card: 0 0% 98%;
+  --card-foreground: 0 0% 3.9%;
+
+  --popover: 0 0% 98%;
+  --popover-foreground: 0 0% 3.9%;
+
+  --primary: 0 0% 0%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 0 0% 96.1%;
+  --secondary-foreground: 0 0% 9%;
+
+  --muted: 0 0% 96.1%;
+  --muted-foreground: 0 0% 45.1%;
+
+  --accent: 0 0% 94%;
+  --accent-foreground: 0 0% 9%;
+
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 0 0% 89.8%;
+  --input: 0 0% 89.8%;
+  --ring: 0 0% 0%;
+
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+
+  --card: 0 0% 3.9%;
+  --card-foreground: 0 0% 98%;
+
+  --popover: 0 0% 3.9%;
+  --popover-foreground: 0 0% 98%;
+
+  --primary: 0 0% 100%;
+  --primary-foreground: 0 0% 0%;
+
+  --secondary: 0 0% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+
+  --muted: 0 0% 14.9%;
+  --muted-foreground: 0 0% 63.9%;
+
+  --accent: 0 0% 20%;
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 0 0% 15.9%;
+  --input: 0 0% 15.9%;
+  --ring: 0 0% 100%;
+}
+
+* {
+  @apply border-border;
+}
+
+html,
+body {
+  height: 100dvh;
+  width: 100%;
+  overflow: hidden;
+  touch-action: none;
+  position: fixed;
+}
+
+body {
+  @apply bg-background text-foreground;
+  font-family: "Geist Mono", monospace;
+}
+
+.bg-radial-gradient-dark {
+  background: radial-gradient(circle at center, #222222 0%, #050505 100%);
+}
+
+.bg-radial-gradient-light {
+  background: radial-gradient(circle at center, #f5f5f5 0%, #e0e0e0 100%);
+}
+
+/* Улучшенные стили для кнопок при наведении */
+.button-hover-effect {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .button-hover-effect:hover {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4), 0 0 20px rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.light .button-hover-effect:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Улучшенные стили для активных кнопок */
+.button-active-effect:active {
+  transform: scale(0.96) translateY(1px);
+  transition: all 0.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Анимация для мобильного меню */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.menu-slide-in {
+  animation: slideIn 0.3s cubic-bezier(0.25, 0.1, 0.25, 1.0) forwards;
+}
+
+.menu-slide-out {
+  animation: slideOut 0.3s cubic-bezier(0.25, 0.1, 0.25, 1.0) forwards;
+}
+
+/* Анимация для элементов меню */
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.menu-item-animation {
+  animation: fadeInRight 0.5s cubic-bezier(0.25, 0.1, 0.25, 1.0) forwards;
+}
+
+.menu-item-delay-1 {
+  animation-delay: 0.1s;
+}
+
+.menu-item-delay-2 {
+  animation-delay: 0.2s;
+}
+
+.menu-item-delay-3 {
+  animation-delay: 0.3s;
+}
+
+.menu-item-delay-4 {
+  animation-delay: 0.4s;
+}
+
+/* Enhanced animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rotateGlow {
+  0% {
+    transform: rotate(0deg);
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+    filter: hue-rotate(360deg);
+  }
+}
+
+.animation-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animation-pulse {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.animation-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animation-slide-up {
+  animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.stagger-animation > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.stagger-animation > *:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.stagger-animation > *:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.stagger-animation > *:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.stagger-animation > *:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.stagger-animation > *:nth-child(5) {
+  animation-delay: 0.5s;
+}
