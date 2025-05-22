@@ -102,7 +102,7 @@ body {
 }
 
 body {
-  @apply bg-background text-foreground font-sans; /* Применяем основной шрифт Tailwind */
+  @apply bg-background text-foreground font-sans;
 }
 
 .bg-radial-gradient-dark {
