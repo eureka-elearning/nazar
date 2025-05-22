@@ -149,113 +149,115 @@ export default function Form({ isLoading, onSubmit, onOpenOptions }: FormProps) 
   }
 
   return (
-    <UIForm {...form}>
-      <form ref={formRef} onSubmit={form.handleSubmit(onSubmit)} className="relative w-full">
-        <div
-          ref={dropAreaRef}
-          className={cn(
-            "relative backdrop-blur-md rounded-[24px] overflow-hidden transition-all shadow-lg theme-transition",
-            theme === "dark"
-              ? "bg-black/60 border border-[rgba(255,255,255,0.12)]"
-              : "bg-white/60 border border-[rgba(0,0,0,0.12)]",
-            isDragging
-              ? theme === "dark"
-                ? "ring-2 ring-white"
-                : "ring-2 ring-gray-800"
-              : isFocused
+    <div className="absolute bottom-8 left-0 right-0 mx-auto mobile-prompt-container">
+      <UIForm {...form}>
+        <form ref={formRef} onSubmit={form.handleSubmit(onSubmit)} className="relative w-full">
+          <div
+            ref={dropAreaRef}
+            className={cn(
+              "relative backdrop-blur-md rounded-[24px] overflow-hidden transition-all shadow-lg theme-transition",
+              theme === "dark"
+                ? "bg-black/60 border border-[rgba(255,255,255,0.12)]"
+                : "bg-white/60 border border-[rgba(0,0,0,0.12)]",
+              isDragging
                 ? theme === "dark"
                   ? "ring-2 ring-white"
                   : "ring-2 ring-gray-800"
-                : "",
-            isLoading && "animate-pulse-loading pointer-events-none opacity-70",
-          )}
-          onDragEnter={handleDragEnter}
-          onDragLeave={handleDragLeave}
-          onDragOver={handleDragOver}
-          onDrop={handleDrop}
-        >
-          {/* Image previews */}
-          <ImageUploadArea previewUrls={previewUrls} onRemoveImage={removeImage} isLoading={isLoading} />
+                : isFocused
+                  ? theme === "dark"
+                    ? "ring-2 ring-white"
+                    : "ring-2 ring-gray-800"
+                  : "",
+              isLoading && "animate-pulse-loading pointer-events-none opacity-70",
+            )}
+            onDragEnter={handleDragEnter}
+            onDragLeave={handleDragLeave}
+            onDragOver={handleDragOver}
+            onDrop={handleDrop}
+          >
+            {/* Image previews */}
+            <ImageUploadArea previewUrls={previewUrls} onRemoveImage={removeImage} isLoading={isLoading} />
 
-          <div className="px-2 py-1.5">
-            <div className="flex items-center">
-              <div className="flex space-x-0">
-                <input
-                  type="file"
-                  ref={fileInputRef}
-                  accept="image/*"
-                  multiple
-                  onChange={handleImageChange}
-                  className="hidden"
+            <div className="px-2 py-1.5">
+              <div className="flex items-center">
+                <div className="flex space-x-0">
+                  <input
+                    type="file"
+                    ref={fileInputRef}
+                    accept="image/*"
+                    multiple
+                    onChange={handleImageChange}
+                    className="hidden"
+                    disabled={isLoading}
+                  />
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="icon"
+                    onClick={triggerFileInput}
+                    className="rounded-full h-10 w-10 ml-0 button-hover-effect"
+                    disabled={isLoading}
+                  >
+                    <ImageIcon className="h-5 w-5" />
+                  </Button>
+
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="icon"
+                    onClick={onOpenOptions}
+                    className="rounded-full h-10 w-10 ml-0 button-hover-effect"
+                    disabled={isLoading}
+                  >
+                    <SlidersHorizontal className="h-5 w-5" />
+                  </Button>
+                </div>
+
+                <AutoResizeTextarea
+                  placeholder={t("form.placeholder")}
+                  className={`flex-1 bg-transparent border-0 focus:ring-0 ${
+                    theme === "dark" ? "text-white placeholder:text-gray-400" : "text-gray-800 placeholder:text-gray-500"
+                  } py-2 px-3 resize-none text-base tracking-normal`}
+                  {...form.register("prompt")}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
+                  onKeyDown={handleKeyDown}
                   disabled={isLoading}
                 />
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="icon"
-                  onClick={triggerFileInput}
-                  className="rounded-full h-10 w-10 ml-0 button-hover-effect"
-                  disabled={isLoading}
-                >
-                  <ImageIcon className="h-5 w-5" />
-                </Button>
 
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="icon"
-                  onClick={onOpenOptions}
-                  className="rounded-full h-10 w-10 ml-0 button-hover-effect"
-                  disabled={isLoading}
-                >
-                  <SlidersHorizontal className="h-5 w-5" />
-                </Button>
-              </div>
-
-              <AutoResizeTextarea
-                placeholder={t("form.placeholder")}
-                className={`flex-1 bg-transparent border-0 focus:ring-0 ${
-                  theme === "dark" ? "text-white placeholder:text-gray-400" : "text-gray-800 placeholder:text-gray-500"
-                } py-2 px-3 resize-none text-base tracking-normal`}
-                {...form.register("prompt")}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-                onKeyDown={handleKeyDown}
-                disabled={isLoading}
-              />
-
-              <div>
-                <Button
-                  type="submit"
-                  variant={theme === "dark" ? "light" : "dark"}
-                  className="rounded-full h-10 w-10 p-0 flex items-center justify-center button-hover-effect button-active-effect"
-                  disabled={isLoading}
-                >
-                  <ArrowUp className="h-5 w-5" />
-                </Button>
+                <div>
+                  <Button
+                    type="submit"
+                    variant={theme === "dark" ? "light" : "dark"}
+                    className="rounded-full h-10 w-10 p-0 flex items-center justify-center button-hover-effect button-active-effect"
+                    disabled={isLoading}
+                  >
+                    <ArrowUp className="h-5 w-5" />
+                  </Button>
+                </div>
               </div>
             </div>
+
+            {isDragging && (
+              <div
+                className={`absolute inset-0 ${
+                  theme === "dark" ? "bg-black/80" : "bg-white/80"
+                } flex items-center justify-center pointer-events-none z-10`}
+              >
+                <p className={`font-medium tracking-normal text-lg ${theme === "dark" ? "text-white" : "text-gray-800"}`}>
+                  {t("form.dropImages")}
+                </p>
+              </div>
+            )}
           </div>
 
-          {isDragging && (
-            <div
-              className={`absolute inset-0 ${
-                theme === "dark" ? "bg-black/80" : "bg-white/80"
-              } flex items-center justify-center pointer-events-none z-10`}
-            >
-              <p className={`font-medium tracking-normal text-lg ${theme === "dark" ? "text-white" : "text-gray-800"}`}>
-                {t("form.dropImages")}
-              </p>
+          {error && (
+            <div className={`mt-2 text-sm tracking-normal ${theme === "dark" ? "text-red-400" : "text-red-600"}`}>
+              {error}
             </div>
           )}
-        </div>
-
-        {error && (
-          <div className={`mt-2 text-sm tracking-normal ${theme === "dark" ? "text-red-400" : "text-red-600"}`}>
-            {error}
-          </div>
-        )}
-      </form>
-    </UIForm>
+        </form>
+      </UIForm>
+    </div>
   )
 }
