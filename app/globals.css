@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Переменные для анимации смены темы */
 :root {
   --theme-transition-duration: 0.5s;
   --theme-transition-timing: ease;
@@ -10,19 +9,16 @@
   --menu-transition-timing: cubic-bezier(0.25, 0.1, 0.25, 1.0);
 }
 
-/* Анимация для плавной смены темы */
 .theme-transition {
   transition: background-color var(--theme-transition-duration) var(--theme-transition-timing), color
     var(--theme-transition-duration) var(--theme-transition-timing), border-color var(--theme-transition-duration)
     var(--theme-transition-timing), box-shadow var(--theme-transition-duration) var(--theme-transition-timing);
 }
 
-/* Анимация для фона с градиентом */
 .bg-transition {
   transition: background var(--theme-transition-duration) var(--theme-transition-timing);
 }
 
-/* Анимации для мобильного меню */
 .menu-item-enter {
   opacity: 0;
   transform: translateX(20px);
@@ -50,60 +46,43 @@
 :root {
   --background: 0 0% 100%;
   --foreground: 0 0% 3.9%;
-
   --card: 0 0% 98%;
   --card-foreground: 0 0% 3.9%;
-
   --popover: 0 0% 98%;
   --popover-foreground: 0 0% 3.9%;
-
   --primary: 0 0% 0%;
   --primary-foreground: 0 0% 100%;
-
   --secondary: 0 0% 96.1%;
   --secondary-foreground: 0 0% 9%;
-
   --muted: 0 0% 96.1%;
   --muted-foreground: 0 0% 45.1%;
-
   --accent: 0 0% 94%;
   --accent-foreground: 0 0% 9%;
-
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 98%;
-
   --border: 0 0% 89.8%;
   --input: 0 0% 89.8%;
   --ring: 0 0% 0%;
-
   --radius: 0.5rem;
 }
 
 .dark {
   --background: 0 0% 0%;
   --foreground: 0 0% 100%;
-
   --card: 0 0% 3.9%;
   --card-foreground: 0 0% 98%;
-
   --popover: 0 0% 3.9%;
   --popover-foreground: 0 0% 98%;
-
   --primary: 0 0% 100%;
   --primary-foreground: 0 0% 0%;
-
   --secondary: 0 0% 15.9%;
   --secondary-foreground: 0 0% 98%;
-
   --muted: 0 0% 14.9%;
   --muted-foreground: 0 0% 63.9%;
-
   --accent: 0 0% 20%;
   --accent-foreground: 0 0% 100%;
-
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 0 0% 98%;
-
   --border: 0 0% 15.9%;
   --input: 0 0% 15.9%;
   --ring: 0 0% 100%;
@@ -123,8 +102,7 @@ body {
 }
 
 body {
-  @apply bg-background text-foreground;
-  font-family: "Geist Mono", monospace;
+  @apply bg-background text-foreground font-sans; /* Применяем основной шрифт Tailwind */
 }
 
 .bg-radial-gradient-dark {
@@ -135,7 +113,6 @@ body {
   background: radial-gradient(circle at center, #f5f5f5 0%, #e0e0e0 100%);
 }
 
-/* Улучшенные стили для кнопок при наведении */
 .button-hover-effect {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -150,13 +127,11 @@ body {
   transform: translateY(-2px);
 }
 
-/* Улучшенные стили для активных кнопок */
 .button-active-effect:active {
   transform: scale(0.96) translateY(1px);
   transition: all 0.1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Анимация для мобильного меню */
 @keyframes slideIn {
   from {
     transform: translateX(100%);
@@ -187,7 +162,6 @@ body {
   animation: slideOut 0.3s cubic-bezier(0.25, 0.1, 0.25, 1.0) forwards;
 }
 
-/* Анимация для элементов меню */
 @keyframes fadeInRight {
   from {
     opacity: 0;
@@ -219,7 +193,6 @@ body {
   animation-delay: 0.4s;
 }
 
-/* Enhanced animations */
 @keyframes float {
   0% {
     transform: translateY(0px);
