@@ -25,6 +25,8 @@ const translations: Record<Language, Record<string, string>> = {
   en: {
     // Header
     "app.title": "3D Model Generator",
+    "app.title3D": "AI 3D Model Generator",
+    "app.titleLessons": "AI Lesson Plan Generator",
     "app.powered": "Powered by Hyper3D Rodin",
     "app.website": "Website",
     "app.docs": "API Docs",
@@ -84,9 +86,6 @@ const translations: Record<Language, Record<string, string>> = {
     // Auth
     "auth.signIn": "Sign In",
     "auth.signUp": "Sign Up",
-    "auth.email": "Email",
-    "auth.password": "Password",
-    "auth.confirmPassword": "Sign Up",
     "auth.email": "Email",
     "auth.password": "Password",
     "auth.confirmPassword": "Confirm Password",
@@ -182,6 +181,8 @@ const translations: Record<Language, Record<string, string>> = {
   ru: {
     // Header
     "app.title": "Генератор 3D Моделей",
+    "app.title3D": "AI-Генератор 3D-моделей",
+    "app.titleLessons": "AI-Генератор планов уроков",
     "app.powered": "Работает на Hyper3D Rodin",
     "app.website": "Веб-сайт",
     "app.docs": "API Документация",
@@ -336,6 +337,8 @@ const translations: Record<Language, Record<string, string>> = {
   be: {
     // Header
     "app.title": "Генератар 3D-мадэляў",
+    "app.title3D": "AI-Генератар 3D-мадэляў",
+    "app.titleLessons": "AI-Генератар планаў урокаў",
     "app.powered": "Працуе на Hyper3D Rodin",
     "app.website": "Вэб-сайт",
     "app.docs": "API Дакументацыя",
