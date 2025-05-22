@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
@@ -53,7 +53,6 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Custom monochrome UI colors
         mono: {
           black: "#000000",
           dark: "#121212",
@@ -68,9 +67,9 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-        mono: ["Geist Mono", "monospace"],
-        display: ["Geist Mono", "monospace"],
+        sans: ["var(--font-geist-sans)", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+        mono: ["var(--font-geist-mono)", "ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"],
+        display: ["var(--font-geist-sans)", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {
@@ -118,9 +117,9 @@ const config = {
           },
         },
         "pulse-loading": {
-          "0%": { opacity: 0.6 },
-          "50%": { opacity: 1 },
-          "100%": { opacity: 0.6 },
+          "0%": { opacity: "0.6" },
+          "50%": { opacity: "1" },
+          "100%": { opacity: "0.6" },
         },
         "progress-indeterminate": {
           "0%": { left: "-40%" },
@@ -157,6 +156,6 @@ const config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
+} satisfies Config;
 
-export default config
+export default config;
